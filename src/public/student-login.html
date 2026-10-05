@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Login - Student Profiling System</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<header class="bg-success text-white py-4">
+
+    <div class="container text-center">
+
+        <h1 class="fw-bold">
+            Student Login
+        </h1>
+
+        <p class="mb-0">
+            Student Academic Personal & Career Profiling System
+        </p>
+
+    </div>
+
+</header>
+
+
+<main class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-5">
+
+            <div class="card shadow-sm">
+
+                <div class="card-body p-4">
+
+                    <div class="text-center mb-4">
+
+                        <div class="display-4">
+                            🎓
+                        </div>
+
+                        <h3 class="fw-bold mt-2">
+                            Student Login
+                        </h3>
+
+                        <p class="text-muted">
+                            Login to access your student profile
+                        </p>
+
+                    </div>
+
+
+                    <!-- LOGIN FORM -->
+
+                    <form id="studentLoginForm">
+
+
+                        <!-- EMAIL -->
+
+                        <div class="mb-3">
+
+                            <label
+                                for="studentEmail"
+                                class="form-label"
+                            >
+                                Institutional Email ID
+                            </label>
+
+                            <input
+                                type="email"
+                                id="studentEmail"
+                                class="form-control"
+                                placeholder="Enter your institutional email"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- PASSWORD -->
+
+                        <div class="mb-4">
+
+                            <label
+                                for="studentPassword"
+                                class="form-label"
+                            >
+                                Password
+                            </label>
+
+                            <input
+                                type="password"
+                                id="studentPassword"
+                                class="form-control"
+                                placeholder="Enter your password"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- LOGIN BUTTON -->
+
+                        <button
+                            type="submit"
+                            class="btn btn-success w-100"
+                        >
+                            Login
+                        </button>
+
+
+                    </form>
+
+
+                    <!-- MESSAGE -->
+
+                    <div
+                        id="loginMessage"
+                        class="alert mt-4 d-none"
+                    ></div>
+
+
+                    <!-- BACK -->
+
+                    <div class="text-center mt-4">
+
+                        <a
+                            href="/"
+                            class="text-decoration-none"
+                        >
+                            ← Back to Home
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="/js/student-login.js"></script>
+
+</body>
+
+</html>

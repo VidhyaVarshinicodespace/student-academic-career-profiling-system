@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title id="pageTitle">Create Student Profile</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        body {
+            background: #f4f6f9;
+        }
+
+        .container {
+            max-width: 1100px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 12px;
+        }
+
+        .card-header {
+            font-weight: bold;
+        }
+
+        .section-title {
+            font-weight: 600;
+        }
+
+        .semester-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #fafafa;
+        }
+
+        .remove-semester {
+            float: right;
+        }
+
+        label {
+            font-weight: 500;
+        }
+
+        .required {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container py-4">
+
+    <!-- PAGE HEADING -->
+    <div class="text-center mb-4">
+        <h2 id="pageTitleText">Student Academic Personal and Career Profile</h2>
+        <p class="text-muted">
+            Enter and manage student profile information
+        </p>
+    </div>
+
+
+    <form id="studentForm">
+
+
+        <!-- ===================================================== -->
+        <!-- PERSONAL DETAILS -->
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">1. Personal Details</h5>
+            </div>
+
+            <div class="card-body">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label for="studentName">
+                            Student Name <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="studentName"
+                            class="form-control"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+                        <label for="registerNumber">
+                            Register Number <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="registerNumber"
+                            class="form-control"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+                        <label for="dateOfBirth">
+                            Date of Birth
+                        </label>
+
+                        <input
+                            type="date"
+                            id="dateOfBirth"
+                            class="form-control"
+                        >
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+                        <label for="gender">
+                            Gender
+                        </label>
+
+                        <select id="gender" class="form-select">
+                            <option value="">Select</option>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+                        <label for="department">
+                            Department
+                        </label>
+
+                        <input
+                            type="text"
+                            id="department"
+                            class="form-control"
+                            placeholder="Example: CSE"
+                        >
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+                        <label for="section">
+                            Section
+                        </label>
+
+                        <input
+                            type="text"
+                            id="section"
+                            class="form-control"
+                            placeholder="Example: E"
+                        >
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+                        <label for="institutionalEmail">
+                            Institutional Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="institutionalEmail"
+                            class="form-control"
+                        >
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+                        <label for="personalEmail">
+                            Personal Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="personalEmail"
+                            class="form-control"
+                        >
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+                        <label for="mobile">
+                            Mobile Number
+                        </label>
+
+                        <input
+                            type="text"
+                            id="mobile"
+                            class="form-control"
+                        >
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+                        <label for="category">
+                            Student Category
+                        </label>
+
+                        <select id="category" class="form-select">
+
+                            <option value="">
+                                Select Category
+                            </option>
+
+                            <option value="Hosteller">
+                                Hosteller
+                            </option>
+
+                            <option value="Day Scholar">
+                                Day Scholar
+                            </option>
+
+                        </select>
+                    </div>
+
+
+                    <!-- HOSTEL NAME -->
+                    <div
+                        class="col-md-4 mb-3"
+                        id="hostelFields"
+                        style="display:none;"
+                    >
+
+                        <label for="hostelName">
+                            Hostel Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="hostelName"
+                            class="form-control"
+                        >
+
+                    </div>
+
+
+                    <!-- DISTANCE -->
+                    <div
+                        class="col-md-4 mb-3"
+                        id="distanceFields"
+                        style="display:none;"
+                    >
+
+                        <label for="distanceToCollege">
+                            Distance to College (km)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="distanceToCollege"
+                            class="form-control"
+                            min="0"
+                            step="0.1"
+                        >
+
+                    </div>
+
+
+                    <div class="col-md-12 mb-3">
+
+                        <label for="residentialAddress">
+                            Residential Address
+                        </label>
+
+                        <textarea
+                            id="residentialAddress"
+                            class="form-control"
+                            rows="3"
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <!-- ===================================================== -->
+        <!-- FAMILY DETAILS -->
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">2. Family Details</h5>
+            </div>
+
+            <div class="card-body">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label for="fatherName">
+                            Father's Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fatherName"
+                            class="form-control"
+                        >
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+                        <label for="fatherOccupation">
+                            Father's Occupation
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fatherOccupation"
+                            class="form-control"
+                        >
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+                        <label for="fatherIncomeRange">
+                            Father's Income Range
+                        </label>
+
+                        <select
+                            id="fatherIncomeRange"
+                            class="form-select"
+                        >
+
+                            <option value="">Select Range</option>
+                            <option value="Below 1 Lakh">
+                                Below 1 Lakh
+                            </option>
+                            <option value="1 - 3 Lakhs">
+                                1 - 3 Lakhs
+                            </option>
+                            <option value="3 - 5 Lakhs">
+                                3 - 5 Lakhs
+                            </option>
+                            <option value="5 - 10 Lakhs">
+                                5 - 10 Lakhs
+                            </option>
+                            <option value="Above 10 Lakhs">
+                                Above 10 Lakhs
+                            </option>
+
+                        </select>
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+                        <label for="fatherMobile">
+                            Father's Mobile
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fatherMobile"
+                            class="form-control"
+                        >
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+                        <label for="motherName">
+                            Mother's Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="motherName"
+                            class="form-control"
+                        >
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+                        <label for="motherOccupation">
+                            Mother's Occupation
+                        </label>
+
+                        <input
+                            type="text"
+                            id="motherOccupation"
+                            class="form-control"
+                        >
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+                        <label for="motherIncomeRange">
+                            Mother's Income Range
+                        </label>
+
+                        <select
+                            id="motherIncomeRange"
+                            class="form-select"
+                        >
+
+                            <option value="">Select Range</option>
+                            <option value="Below 1 Lakh">
+                                Below 1 Lakh
+                            </option>
+                            <option value="1 - 3 Lakhs">
+                                1 - 3 Lakhs
+                            </option>
+                            <option value="3 - 5 Lakhs">
+                                3 - 5 Lakhs
+                            </option>
+                            <option value="5 - 10 Lakhs">
+                                5 - 10 Lakhs
+                            </option>
+                            <option value="Above 10 Lakhs">
+                                Above 10 Lakhs
+                            </option>
+
+                        </select>
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+                        <label for="motherMobile">
+                            Mother's Mobile
+                        </label>
+
+                        <input
+                            type="text"
+                            id="motherMobile"
+                            class="form-control"
+                        >
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+                        <label for="guardianName">
+                            Guardian Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="guardianName"
+                            class="form-control"
+                        >
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+                        <label for="emergencyContact">
+                            Emergency Contact
+                        </label>
+
+                        <input
+                            type="text"
+                            id="emergencyContact"
+                            class="form-control"
+                        >
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+
+                        <div class="form-check">
+
+                            <input
+                                type="checkbox"
+                                id="firstGenerationGraduate"
+                                class="form-check-input"
+                            >
+
+                            <label
+                                for="firstGenerationGraduate"
+                                class="form-check-label"
+                            >
+                                First Generation Graduate
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+
+                        <div class="form-check">
+
+                            <input
+                                type="checkbox"
+                                id="scholarshipReceived"
+                                class="form-check-input"
+                            >
+
+                            <label
+                                for="scholarshipReceived"
+                                class="form-check-label"
+                            >
+                                Scholarship Received
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+
+                        <div class="form-check">
+
+                            <input
+                                type="checkbox"
+                                id="financialGuidanceRequired"
+                                class="form-check-input"
+                            >
+
+                            <label
+                                for="financialGuidanceRequired"
+                                class="form-check-label"
+                            >
+                                Financial Guidance Required
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <!-- ===================================================== -->
+        <!-- ACADEMIC DETAILS -->
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">3. Academic Details</h5>
+            </div>
+
+            <div class="card-body">
+
+                <div id="semesterContainer"></div>
+
+                <button
+                    type="button"
+                    id="addSemesterButton"
+                    class="btn btn-primary"
+                >
+                    + Add Semester
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ===================================================== -->
+        <!-- ARREAR DETAILS -->
+        <!-- ===================================================== -->
+
+        <div
+            id="arrearDetailsSection"
+            class="card shadow-sm mb-4"
+            style="display:none;"
+        >
+
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0">4. Arrear Details</h5>
+            </div>
+
+            <div class="card-body">
+
+                <div class="alert alert-warning">
+                    Enter arrear details only when the semester
+                    arrear status is <strong>Yes</strong>.
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+
+                        <label for="arrearSemesterNumber">
+                            Semester Number
+                        </label>
+
+                        <input
+                            type="number"
+                            id="arrearSemesterNumber"
+                            class="form-control"
+                            min="1"
+                        >
+
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+
+                        <label for="arrearSubjectCode">
+                            Subject Code
+                        </label>
+
+                        <input
+                            type="text"
+                            id="arrearSubjectCode"
+                            class="form-control"
+                        >
+
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+
+                        <label for="arrearSubjectName">
+                            Subject Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="arrearSubjectName"
+                            class="form-control"
+                        >
+
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+
+                        <label for="arrearAttempts">
+                            Number of Attempts
+                        </label>
+
+                        <input
+                            type="number"
+                            id="arrearAttempts"
+                            class="form-control"
+                            min="1"
+                        >
+
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+
+                        <label for="arrearStatus">
+                            Status
+                        </label>
+
+                        <select
+                            id="arrearStatus"
+                            class="form-select"
+                        >
+
+                            <option value="">
+                                Select
+                            </option>
+
+                            <option value="Pending">
+                                Pending
+                            </option>
+
+                            <option value="Cleared">
+                                Cleared
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+
+                        <label for="clearedSemester">
+                            Cleared Semester
+                        </label>
+
+                        <input
+                            type="number"
+                            id="clearedSemester"
+                            class="form-control"
+                            min="1"
+                        >
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="gradeAfterClearing">
+                            Grade After Clearing
+                        </label>
+
+                        <input
+                            type="text"
+                            id="gradeAfterClearing"
+                            class="form-control"
+                        >
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="reasonForDifficulty">
+                            Reason for Difficulty
+                        </label>
+
+                        <textarea
+                            id="reasonForDifficulty"
+                            class="form-control"
+                            rows="2"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="col-md-12 mb-3">
+
+                        <label for="remedialSupportRequired">
+                            Remedial Support Required
+                        </label>
+
+                        <textarea
+                            id="remedialSupportRequired"
+                            class="form-control"
+                            rows="2"
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <!-- ===================================================== -->
+        <!-- TECHNICAL DETAILS -->
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0">5. Technical & Professional Details</h5>
+            </div>
+
+            <div class="card-body">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="programmingLanguages">
+                            Programming Languages
+                        </label>
+
+                        <input
+                            type="text"
+                            id="programmingLanguages"
+                            class="form-control"
+                            placeholder="Example: C, C++, Java, Python"
+                        >
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="technicalSkills">
+                            Technical Skills
+                        </label>
+
+                        <input
+                            type="text"
+                            id="technicalSkills"
+                            class="form-control"
+                            placeholder="Example: HTML, CSS, MongoDB"
+                        >
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="technicalAreaOfInterest">
+                            Area of Interest
+                        </label>
+
+                        <select
+                            id="technicalAreaOfInterest"
+                            class="form-select"
+                        >
+
+                            <option value="">
+                                Select Area
+                            </option>
+
+                            <option value="DBMS">
+                                DBMS
+                            </option>
+
+                            <option value="CNS">
+                                CNS
+                            </option>
+
+                            <option value="Machine Learning">
+                                Machine Learning
+                            </option>
+
+                            <option value="Artificial Intelligence">
+                                Artificial Intelligence
+                            </option>
+
+                            <option value="Web Development">
+                                Web Development
+                            </option>
+
+                            <option value="Cloud Computing">
+                                Cloud Computing
+                            </option>
+
+                            <option value="Cyber Security">
+                                Cyber Security
+                            </option>
+
+                            <option value="Data Science">
+                                Data Science
+                            </option>
+
+                            <option value="Networking">
+                                Networking
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="preferredTechnicalDomain">
+                            Preferred Technical Domain
+                        </label>
+
+                        <input
+                            type="text"
+                            id="preferredTechnicalDomain"
+                            class="form-control"
+                        >
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="certifications">
+                            Certifications
+                        </label>
+
+                        <input
+                            type="text"
+                            id="certifications"
+                            class="form-control"
+                            placeholder="Example: NPTEL, Coursera"
+                        >
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="hackathons">
+                            Hackathons
+                        </label>
+
+                        <textarea
+                            id="hackathons"
+                            class="form-control"
+                            rows="2"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="col-md-12 mb-3">
+
+                        <label for="internshipExperience">
+                            Internship Experience
+                        </label>
+
+                        <textarea
+                            id="internshipExperience"
+                            class="form-control"
+                            rows="3"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="communicationSkillLevel">
+                            Communication Skill Level
+                        </label>
+
+                        <select
+                            id="communicationSkillLevel"
+                            class="form-select"
+                        >
+
+                            <option value="">
+                                Select
+                            </option>
+
+                            <option value="Beginner">
+                                Beginner
+                            </option>
+
+                            <option value="Intermediate">
+                                Intermediate
+                            </option>
+
+                            <option value="Advanced">
+                                Advanced
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="aptitudeSkillLevel">
+                            Aptitude Skill Level
+                        </label>
+
+                        <select
+                            id="aptitudeSkillLevel"
+                            class="form-select"
+                        >
+
+                            <option value="">
+                                Select
+                            </option>
+
+                            <option value="Beginner">
+                                Beginner
+                            </option>
+
+                            <option value="Intermediate">
+                                Intermediate
+                            </option>
+
+                            <option value="Advanced">
+                                Advanced
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <!-- ===================================================== -->
+        <!-- SELF EVALUATION -->
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">6. Self Evaluation</h5>
+            </div>
+
+            <div class="card-body">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="academicStrengths">
+                            Academic Strengths
+                        </label>
+
+                        <textarea
+                            id="academicStrengths"
+                            class="form-control"
+                            rows="2"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="technicalStrengths">
+                            Technical Strengths
+                        </label>
+
+                        <textarea
+                            id="technicalStrengths"
+                            class="form-control"
+                            rows="2"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="communicationStrengths">
+                            Communication Strengths
+                        </label>
+
+                        <textarea
+                            id="communicationStrengths"
+                            class="form-control"
+                            rows="2"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="leadershipQualities">
+                            Leadership Qualities
+                        </label>
+
+                        <textarea
+                            id="leadershipQualities"
+                            class="form-control"
+                            rows="2"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="teamworkAbilities">
+                            Teamwork Abilities
+                        </label>
+
+                        <textarea
+                            id="teamworkAbilities"
+                            class="form-control"
+                            rows="2"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="areasRequiringImprovement">
+                            Areas Requiring Improvement
+                        </label>
+
+                        <textarea
+                            id="areasRequiringImprovement"
+                            class="form-control"
+                            rows="2"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="subjectsRequiringSupport">
+                            Subjects Requiring Support
+                        </label>
+
+                        <textarea
+                            id="subjectsRequiringSupport"
+                            class="form-control"
+                            rows="2"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="technicalSkillsToDevelop">
+                            Technical Skills to Develop
+                        </label>
+
+                        <textarea
+                            id="technicalSkillsToDevelop"
+                            class="form-control"
+                            rows="2"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="communicationAptitudeToImprove">
+                            Communication / Aptitude to Improve
+                        </label>
+
+                        <textarea
+                            id="communicationAptitudeToImprove"
+                            class="form-control"
+                            rows="2"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="mentorSupportExpected">
+                            Mentor Support Expected
+                        </label>
+
+                        <textarea
+                            id="mentorSupportExpected"
+                            class="form-control"
+                            rows="2"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="shortTermGoal">
+                            Short Term Goal
+                        </label>
+
+                        <textarea
+                            id="shortTermGoal"
+                            class="form-control"
+                            rows="2"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="longTermGoal">
+                            Long Term Goal
+                        </label>
+
+                        <textarea
+                            id="longTermGoal"
+                            class="form-control"
+                            rows="2"
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <!-- ===================================================== -->
+        <!-- CAREER GOAL -->
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header bg-warning">
+                <h5 class="mb-0">7. Career Goal</h5>
+            </div>
+
+            <div class="card-body">
+
+                <div class="mb-3">
+
+                    <label for="careerGoal">
+                        Career Goal
+                    </label>
+
+                    <select
+                        id="careerGoal"
+                        class="form-select"
+                    >
+
+                        <option value="">
+                            Select Career Goal
+                        </option>
+
+                        <option value="Placement">
+                            Placement
+                        </option>
+
+                        <option value="Higher Studies">
+                            Higher Studies
+                        </option>
+
+                        <option value="Entrepreneurship">
+                            Entrepreneurship
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- PLACEMENT -->
+                <div
+                    id="placementFields"
+                    style="display:none;"
+                >
+
+                    <h6 class="section-title mt-3">
+                        Placement Details
+                    </h6>
+
+                    <div class="row">
+
+                        <div class="col-md-4 mb-3">
+
+                            <label for="targetCompanyType">
+                                Target Company Type
+                            </label>
+
+                            <input
+                                type="text"
+                                id="targetCompanyType"
+                                class="form-control"
+                                placeholder="Example: Product Based"
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-4 mb-3">
+
+                            <label for="preferredRole">
+                                Preferred Role
+                            </label>
+
+                            <input
+                                type="text"
+                                id="preferredRole"
+                                class="form-control"
+                                placeholder="Example: Software Engineer"
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-4 mb-3">
+
+                            <label for="placementPreparationStatus">
+                                Preparation Status
+                            </label>
+
+                            <input
+                                type="text"
+                                id="placementPreparationStatus"
+                                class="form-control"
+                                placeholder="Example: Preparing"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- HIGHER STUDIES -->
+                <div
+                    id="higherStudiesFields"
+                    style="display:none;"
+                >
+
+                    <h6 class="section-title mt-3">
+                        Higher Studies Details
+                    </h6>
+
+                    <div class="row">
+
+                        <div class="col-md-3 mb-3">
+
+                            <label for="preferredCourse">
+                                Preferred Course
+                            </label>
+
+                            <input
+                                type="text"
+                                id="preferredCourse"
+                                class="form-control"
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-3 mb-3">
+
+                            <label for="preferredCountry">
+                                Preferred Country
+                            </label>
+
+                            <input
+                                type="text"
+                                id="preferredCountry"
+                                class="form-control"
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-3 mb-3">
+
+                            <label for="entranceExam">
+                                Entrance Exam
+                            </label>
+
+                            <input
+                                type="text"
+                                id="entranceExam"
+                                class="form-control"
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-3 mb-3">
+
+                            <label for="higherStudiesPreparationStatus">
+                                Preparation Status
+                            </label>
+
+                            <input
+                                type="text"
+                                id="higherStudiesPreparationStatus"
+                                class="form-control"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ENTREPRENEURSHIP -->
+                <div
+                    id="entrepreneurshipFields"
+                    style="display:none;"
+                >
+
+                    <h6 class="section-title mt-3">
+                        Entrepreneurship Details
+                    </h6>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label for="businessIdea">
+                                Business Idea
+                            </label>
+
+                            <textarea
+                                id="businessIdea"
+                                class="form-control"
+                                rows="2"
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="col-md-6 mb-3">
+
+                            <label for="entrepreneurshipDomain">
+                                Domain
+                            </label>
+
+                            <input
+                                type="text"
+                                id="entrepreneurshipDomain"
+                                class="form-control"
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-6 mb-3">
+
+                            <label for="entrepreneurshipCurrentStage">
+                                Current Stage
+                            </label>
+
+                            <input
+                                type="text"
+                                id="entrepreneurshipCurrentStage"
+                                class="form-control"
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-6 mb-3">
+
+                            <label for="entrepreneurshipSupportRequired">
+                                Support Required
+                            </label>
+
+                            <textarea
+                                id="entrepreneurshipSupportRequired"
+                                class="form-control"
+                                rows="2"
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <!-- ===================================================== -->
+        <!-- RESET PASSWORD -->
+        <!-- ===================================================== -->
+
+        <div
+            id="passwordResetSection"
+            class="card shadow-sm mb-4"
+        >
+
+            <div class="card-header bg-warning">
+                <h5 class="mb-0">
+                    🔐 Reset Student Login Password
+                </h5>
+            </div>
+
+            <div class="card-body">
+
+                <div class="alert alert-info">
+
+                    <strong>Reset Password:</strong>
+                    Enter a new password for this student's login.
+
+                    <br>
+
+                    Password must contain at least
+                    <strong>6 characters</strong>.
+
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="newPassword">
+                            New Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="newPassword"
+                            class="form-control"
+                            placeholder="Enter new password"
+                            minlength="6"
+                        >
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="confirmPassword">
+                            Confirm New Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            class="form-control"
+                            placeholder="Re-enter new password"
+                            minlength="6"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="resetPasswordButton"
+                    class="btn btn-warning"
+                    onclick="resetStudentPassword()"
+                >
+                    🔑 Reset Password
+                </button>
+
+
+                <div
+                    id="passwordMessage"
+                    class="mt-3"
+                    style="display:none;"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ===================================================== -->
+        <!-- BUTTONS -->
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-5">
+
+            <div class="card-body text-center">
+
+                <button
+                    type="submit"
+                    id="submitButton"
+                    class="btn btn-primary btn-lg me-2"
+                >
+                    Save Student Profile
+                </button>
+
+
+                <button
+                    type="button"
+                    id="cancelButton"
+                    class="btn btn-secondary btn-lg"
+                >
+                    Cancel
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<!-- BOOTSTRAP JS -->
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<!-- YOUR PROFILE JS -->
+<script src="/js/profile.js"></script>
+
+</body>
+</html>

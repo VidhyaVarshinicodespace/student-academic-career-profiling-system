@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Faculty Login - Student Profiling System</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="bg-primary text-white py-4">
+        <div class="container text-center">
+
+            <h1 class="fw-bold">
+                Faculty Login
+            </h1>
+
+            <p class="mb-0">
+                Student Academic Personal & Career Profiling System
+            </p>
+
+        </div>
+    </header>
+
+
+    <!-- Login Form -->
+    <main class="container py-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-5">
+
+                <div class="card shadow-sm">
+
+                    <div class="card-body p-4">
+
+                        <div class="text-center mb-4">
+
+                            <div class="display-4">
+                                👩‍🏫
+                            </div>
+
+                            <h3 class="fw-bold mt-2">
+                                Faculty Login
+                            </h3>
+
+                            <p class="text-muted">
+                                Login to access student profiles
+                            </p>
+
+                        </div>
+
+
+                        <form id="facultyLoginForm">
+
+                            <!-- Faculty ID -->
+                            <div class="mb-3">
+
+                                <label
+                                    for="facultyId"
+                                    class="form-label"
+                                >
+                                    Faculty ID
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="facultyId"
+                                    class="form-control"
+                                    placeholder="Enter Faculty ID"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- Password -->
+                            <div class="mb-4">
+
+                                <label
+                                    for="facultyPassword"
+                                    class="form-label"
+                                >
+                                    Password
+                                </label>
+
+                                <input
+                                    type="password"
+                                    id="facultyPassword"
+                                    class="form-control"
+                                    placeholder="Enter Password"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- Login Button -->
+                            <button
+                                type="submit"
+                                class="btn btn-primary w-100"
+                            >
+                                Login
+                            </button>
+
+                        </form>
+
+
+                        <!-- Message -->
+                        <div
+                            id="loginMessage"
+                            class="alert mt-4 d-none"
+                        ></div>
+
+
+                        <!-- Back -->
+                        <div class="text-center mt-4">
+
+                            <a
+                                href="/"
+                                class="text-decoration-none"
+                            >
+                                ← Back to Home
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="/js/faculty-login.js"></script>
+
+</body>
+
+</html>

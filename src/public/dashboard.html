@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - Student Profiling System</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="bg-primary text-white py-4 mb-4">
+        <div class="container">
+            <h1 class="mb-1">
+                Admin Dashboard
+            </h1>
+
+            <p class="mb-0">
+                Student Academic Personal and Career Profiling System
+            </p>
+        </div>
+    </header>
+
+
+    <main class="container">
+
+        <!-- Dashboard Cards -->
+
+        <div class="row g-4 mb-4">
+
+            <!-- Total Students -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+
+                        <h5 class="card-title">
+                            Total Students
+                        </h5>
+
+                        <h2
+                            id="totalStudents"
+                            class="fw-bold text-primary"
+                        >
+                            0
+                        </h2>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Hostellers -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+
+                        <h5 class="card-title">
+                            Hostellers
+                        </h5>
+
+                        <h2
+                            id="hostellers"
+                            class="fw-bold text-success"
+                        >
+                            0
+                        </h2>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Day Scholars -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+
+                        <h5 class="card-title">
+                            Day Scholars
+                        </h5>
+
+                        <h2
+                            id="dayScholars"
+                            class="fw-bold text-warning"
+                        >
+                            0
+                        </h2>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Student Records -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">
+                    Student Records
+                </h4>
+            </div>
+
+
+            <div class="card-body">
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered table-hover">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>S.No</th>
+                                <th>Register Number</th>
+                                <th>Student Name</th>
+                                <th>Department</th>
+                                <th>Section</th>
+                                <th>Category</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="studentTableBody">
+
+                            <tr>
+                                <td colspan="6" class="text-center">
+                                    Loading student records...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Navigation -->
+
+        <div class="text-center mb-5">
+
+            <a
+                href="/"
+                class="btn btn-primary"
+            >
+                Back to Student Form
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <script src="/js/dashboard.js"></script>
+
+</body>
+
+</html>

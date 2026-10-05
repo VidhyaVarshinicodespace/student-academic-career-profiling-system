@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Profile</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        body {
+            background: #f4f7fb;
+            font-family: Arial, sans-serif;
+        }
+
+        .page-header {
+            background: #0d6efd;
+            color: white;
+            padding: 25px;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .profile-container {
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .section-title {
+            color: #0d6efd;
+            font-weight: bold;
+            border-bottom: 2px solid #e5e5e5;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .info-value {
+            color: #222;
+        }
+
+        .empty-message {
+            color: #777;
+            font-style: italic;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        #loadingMessage {
+            text-align: center;
+            padding: 50px;
+        }
+
+        #errorMessage {
+            display: none;
+        }
+
+        #profileContent {
+            display: none;
+        }
+
+        .interest-badge {
+            display: inline-block;
+            background: #e7f1ff;
+            color: #0d6efd;
+            padding: 6px 10px;
+            margin: 3px;
+            border-radius: 15px;
+            font-size: 13px;
+        }
+
+        .yes-badge {
+            color: #198754;
+            font-weight: bold;
+        }
+
+        .no-badge {
+            color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="mb-2">Student Profile</h1>
+            <p class="mb-0">
+                Academic & Personal Career Profile
+            </p>
+        </div>
+    </div>
+
+
+    <div class="profile-container">
+
+        <!-- LOADING -->
+        <div id="loadingMessage" class="profile-card">
+            <div class="spinner-border text-primary" role="status"></div>
+
+            <p class="mt-3 mb-0">
+                Loading student profile...
+            </p>
+        </div>
+
+
+        <!-- ERROR -->
+        <div id="errorMessage" class="alert alert-danger">
+            Unable to load student profile.
+        </div>
+
+
+        <!-- PROFILE CONTENT -->
+        <div id="profileContent">
+
+            <!-- ========================= -->
+            <!-- PERSONAL DETAILS -->
+            <!-- ========================= -->
+
+            <div class="profile-card">
+
+                <h3 class="section-title">
+                    Personal Details
+                </h3>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <div class="info-label">
+                            Student Name
+                        </div>
+
+                        <div id="studentName" class="info-value">
+                            -
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="info-label">
+                            Register Number
+                        </div>
+
+                        <div id="registerNumber" class="info-value">
+                            -
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="info-label">
+                            Department
+                        </div>
+
+                        <div id="department" class="info-value">
+                            -
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="info-label">
+                            Section
+                        </div>
+
+                        <div id="section" class="info-value">
+                            -
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="info-label">
+                            Date of Birth
+                        </div>
+
+                        <div id="dateOfBirth" class="info-value">
+                            -
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="info-label">
+                            Gender
+                        </div>
+
+                        <div id="gender" class="info-value">
+                            -
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="info-label">
+                            Institutional Email
+                        </div>
+
+                        <div id="institutionalEmail" class="info-value">
+                            -
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="info-label">
+                            Personal Email
+                        </div>
+
+                        <div id="personalEmail" class="info-value">
+                            -
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="info-label">
+                            Mobile
+                        </div>
+
+                        <div id="mobile" class="info-value">
+                            -
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="info-label">
+                            Category
+                        </div>
+
+                        <div id="category" class="info-value">
+                            -
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-8" id="hostelDetails">
+
+                        <div class="info-label">
+                            Hostel
+                        </div>
+
+                        <div id="hostelName" class="info-value">
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6" id="distanceDetails">
+
+                        <div class="info-label">
+                            Distance to College
+                        </div>
+
+                        <div>
+                            <span
+                                id="distanceToCollege"
+                                class="info-value"
+                            >
+                                -
+                            </span>
+
+                            <span>
+                                km
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-12">
+
+                        <div class="info-label">
+                            Residential Address
+                        </div>
+
+                        <div
+                            id="residentialAddress"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- FAMILY DETAILS -->
+            <!-- ========================= -->
+
+            <div class="profile-card">
+
+                <h3 class="section-title">
+                    Family Details
+                </h3>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Father's Name
+                        </div>
+
+                        <div id="fatherName" class="info-value">
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Father's Occupation
+                        </div>
+
+                        <div id="fatherOccupation" class="info-value">
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Mother's Name
+                        </div>
+
+                        <div id="motherName" class="info-value">
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Mother's Occupation
+                        </div>
+
+                        <div id="motherOccupation" class="info-value">
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Guardian Name
+                        </div>
+
+                        <div id="guardianName" class="info-value">
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Emergency Contact
+                        </div>
+
+                        <div id="emergencyContact" class="info-value">
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="info-label">
+                            First Generation Graduate
+                        </div>
+
+                        <div id="firstGenerationGraduate" class="info-value">
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="info-label">
+                            Scholarship Received
+                        </div>
+
+                        <div id="scholarshipReceived" class="info-value">
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="info-label">
+                            Financial Guidance Required
+                        </div>
+
+                        <div
+                            id="financialGuidanceRequired"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- ACADEMIC DETAILS -->
+            <!-- ========================= -->
+
+            <div class="profile-card">
+
+                <h3 class="section-title">
+                    Academic Details
+                </h3>
+
+
+                <div
+                    id="academicEmpty"
+                    class="empty-message"
+                >
+                    No academic details available.
+                </div>
+
+
+                <div
+                    id="academicTable"
+                    class="table-responsive"
+                >
+
+                    <table
+                        class="table table-bordered table-hover align-middle"
+                    >
+
+                        <thead class="table-primary">
+
+                            <tr>
+
+                                <th>
+                                    Semester
+                                </th>
+
+                                <th>
+                                    SGPA
+                                </th>
+
+                                <th>
+                                    CGPA
+                                </th>
+
+                                <th>
+                                    Attendance (%)
+                                </th>
+
+                                <th>
+                                    Arrear
+                                </th>
+
+                                <th>
+                                    No. of Arrears
+                                </th>
+
+                                <th>
+                                    Academic Achievements
+                                </th>
+
+                                <th>
+                                    Area of Interest
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="academicTableBody"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- ARREAR DETAILS -->
+            <!-- HIDDEN BY DEFAULT -->
+            <!-- ========================= -->
+
+            <div
+                id="arrearSection"
+                class="profile-card"
+                style="display: none;"
+            >
+
+                <h3 class="section-title">
+                    Arrear Details
+                </h3>
+
+
+                <div
+                    id="arrearTable"
+                    class="table-responsive"
+                >
+
+                    <table
+                        class="table table-bordered table-hover align-middle"
+                    >
+
+                        <thead class="table-warning">
+
+                            <tr>
+
+                                <th>
+                                    Semester
+                                </th>
+
+                                <th>
+                                    Subject Code
+                                </th>
+
+                                <th>
+                                    Subject Name
+                                </th>
+
+                                <th>
+                                    Attempts
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Cleared Semester
+                                </th>
+
+                                <th>
+                                    Grade
+                                </th>
+
+                                <th>
+                                    Reason for Difficulty
+                                </th>
+
+                                <th>
+                                    Remedial Support
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="arrearTableBody"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- TECHNICAL DETAILS -->
+            <!-- ========================= -->
+
+            <div
+                id="technicalSection"
+                class="profile-card"
+            >
+
+                <h3 class="section-title">
+                    Technical & Professional Details
+                </h3>
+
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Programming Languages
+                        </div>
+
+                        <div
+                            id="programmingLanguages"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Technical Skills
+                        </div>
+
+                        <div
+                            id="technicalSkills"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Area of Interest
+                        </div>
+
+                        <div
+                            id="areaOfInterest"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Preferred Technical Domain
+                        </div>
+
+                        <div
+                            id="preferredTechnicalDomain"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Certifications
+                        </div>
+
+                        <div
+                            id="certifications"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Projects
+                        </div>
+
+                        <div
+                            id="projects"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Hackathons
+                        </div>
+
+                        <div
+                            id="hackathons"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Internship Experience
+                        </div>
+
+                        <div
+                            id="internshipExperience"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Communication Skill Level
+                        </div>
+
+                        <div
+                            id="communicationSkillLevel"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Aptitude Skill Level
+                        </div>
+
+                        <div
+                            id="aptitudeSkillLevel"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- SELF EVALUATION -->
+            <!-- ========================= -->
+
+            <div
+                id="selfEvaluationSection"
+                class="profile-card"
+            >
+
+                <h3 class="section-title">
+                    Self Evaluation
+                </h3>
+
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Academic Strengths
+                        </div>
+
+                        <div
+                            id="academicStrengths"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Technical Strengths
+                        </div>
+
+                        <div
+                            id="technicalStrengths"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Communication Strengths
+                        </div>
+
+                        <div
+                            id="communicationStrengths"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Leadership Qualities
+                        </div>
+
+                        <div
+                            id="leadershipQualities"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Teamwork Abilities
+                        </div>
+
+                        <div
+                            id="teamworkAbilities"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Areas Requiring Improvement
+                        </div>
+
+                        <div
+                            id="areasRequiringImprovement"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Subjects Requiring Support
+                        </div>
+
+                        <div
+                            id="subjectsRequiringSupport"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Technical Skills to Develop
+                        </div>
+
+                        <div
+                            id="technicalSkillsToDevelop"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Communication / Aptitude to Improve
+                        </div>
+
+                        <div
+                            id="communicationAptitudeToImprove"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Mentor Support Expected
+                        </div>
+
+                        <div
+                            id="mentorSupportExpected"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Short-Term Goal
+                        </div>
+
+                        <div
+                            id="shortTermGoal"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-label">
+                            Long-Term Goal
+                        </div>
+
+                        <div
+                            id="longTermGoal"
+                            class="info-value"
+                        >
+                            -
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- CAREER DETAILS -->
+            <!-- ========================= -->
+
+            <div
+                id="careerSection"
+                class="profile-card"
+            >
+
+                <h3 class="section-title">
+                    Career Goal
+                </h3>
+
+
+                <div class="mb-4">
+
+                    <div class="info-label">
+                        Career Goal
+                    </div>
+
+                    <div
+                        id="careerGoal"
+                        class="info-value"
+                    >
+                        -
+                    </div>
+
+                </div>
+
+
+                <!-- PLACEMENT -->
+
+                <div
+                    id="placementDetails"
+                    class="mb-4"
+                >
+
+                    <h5 class="text-primary">
+                        Placement Details
+                    </h5>
+
+
+                    <div class="row g-3">
+
+                        <div class="col-md-4">
+
+                            <div class="info-label">
+                                Target Company Type
+                            </div>
+
+                            <div
+                                id="targetCompanyType"
+                                class="info-value"
+                            >
+                                -
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <div class="info-label">
+                                Preferred Role
+                            </div>
+
+                            <div
+                                id="preferredRole"
+                                class="info-value"
+                            >
+                                -
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <div class="info-label">
+                                Preparation Status
+                            </div>
+
+                            <div
+                                id="placementPreparationStatus"
+                                class="info-value"
+                            >
+                                -
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HIGHER STUDIES -->
+
+                <div
+                    id="higherStudiesDetails"
+                    class="mb-4"
+                >
+
+                    <h5 class="text-primary">
+                        Higher Studies Details
+                    </h5>
+
+
+                    <div class="row g-3">
+
+                        <div class="col-md-3">
+
+                            <div class="info-label">
+                                Preferred Course
+                            </div>
+
+                            <div
+                                id="preferredCourse"
+                                class="info-value"
+                            >
+                                -
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-3">
+
+                            <div class="info-label">
+                                Preferred Country
+                            </div>
+
+                            <div
+                                id="preferredCountry"
+                                class="info-value"
+                            >
+                                -
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-3">
+
+                            <div class="info-label">
+                                Entrance Exam
+                            </div>
+
+                            <div
+                                id="entranceExam"
+                                class="info-value"
+                            >
+                                -
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-3">
+
+                            <div class="info-label">
+                                Preparation Status
+                            </div>
+
+                            <div
+                                id="higherStudiesPreparationStatus"
+                                class="info-value"
+                            >
+                                -
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ENTREPRENEURSHIP -->
+
+                <div
+                    id="entrepreneurshipDetails"
+                >
+
+                    <h5 class="text-primary">
+                        Entrepreneurship Details
+                    </h5>
+
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+
+                            <div class="info-label">
+                                Business Idea
+                            </div>
+
+                            <div
+                                id="businessIdea"
+                                class="info-value"
+                            >
+                                -
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <div class="info-label">
+                                Domain
+                            </div>
+
+                            <div
+                                id="entrepreneurshipDomain"
+                                class="info-value"
+                            >
+                                -
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <div class="info-label">
+                                Current Stage
+                            </div>
+
+                            <div
+                                id="entrepreneurshipCurrentStage"
+                                class="info-value"
+                            >
+                                -
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <div class="info-label">
+                                Support Required
+                            </div>
+
+                            <div
+                                id="entrepreneurshipSupportRequired"
+                                class="info-value"
+                            >
+                                -
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- ACTION BUTTONS -->
+            <!-- ========================= -->
+
+            <div class="profile-card">
+
+                <div class="action-buttons">
+
+                    <button
+                        id="editProfileButton"
+                        class="btn btn-primary"
+                        type="button"
+                    >
+                        Edit Profile
+                    </button>
+
+
+                    <button
+                        id="logoutButton"
+                        class="btn btn-outline-danger"
+                        type="button"
+                    >
+                        Logout
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- BOTTOM ACTIONS -->
+    <!-- ========================= -->
+
+    <div class="container mb-5">
+
+        <div class="d-flex gap-2 flex-wrap">
+
+            <button
+                id="bottomEditButton"
+                class="btn btn-primary"
+                type="button"
+            >
+                Edit Profile
+            </button>
+
+
+            <button
+                id="bottomLogoutButton"
+                class="btn btn-outline-danger"
+                type="button"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="/js/student-profile.js"></script>
+
+</body>
+
+</html>

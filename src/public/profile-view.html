@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Profile</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<header class="bg-primary text-white py-4 mb-4">
+    <div class="container">
+        <h1 class="mb-1">Student Profile</h1>
+        <p class="mb-0">
+            Academic Personal and Career Profiling System
+        </p>
+    </div>
+</header>
+
+
+<main class="container mb-5">
+
+    <!-- Select Student -->
+
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-header bg-dark text-white">
+            <h4 class="mb-0">Select Student</h4>
+        </div>
+
+        <div class="card-body">
+
+            <select id="studentSelect" class="form-select">
+                <option value="">Loading students...</option>
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <!-- Personal Details -->
+
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Personal Details</h4>
+        </div>
+
+        <div class="card-body">
+
+            <div class="row g-3">
+
+                <div class="col-md-6">
+                    <strong>Register Number</strong>
+                    <p id="registerNumber">-</p>
+                </div>
+
+                <div class="col-md-6">
+                    <strong>Student Name</strong>
+                    <p id="studentName">-</p>
+                </div>
+
+                <div class="col-md-6">
+                    <strong>Date of Birth</strong>
+                    <p id="dateOfBirth">-</p>
+                </div>
+
+                <div class="col-md-6">
+                    <strong>Gender</strong>
+                    <p id="gender">-</p>
+                </div>
+
+                <div class="col-md-6">
+                    <strong>Department</strong>
+                    <p id="department">-</p>
+                </div>
+
+                <div class="col-md-6">
+                    <strong>Section</strong>
+                    <p id="section">-</p>
+                </div>
+
+                <div class="col-md-6">
+                    <strong>Institutional Email</strong>
+                    <p id="institutionalEmail">-</p>
+                </div>
+
+                <div class="col-md-6">
+                    <strong>Category</strong>
+                    <p id="category">-</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Academic Details -->
+
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0">Academic Details</h4>
+        </div>
+
+        <div class="card-body">
+
+            <div id="academicMessage" class="text-muted">
+                No semester records available.
+            </div>
+
+            <div class="table-responsive">
+
+                <table
+                    id="academicTable"
+                    class="table table-bordered table-hover d-none"
+                >
+
+                    <thead class="table-light">
+
+                        <tr>
+                            <th>Semester</th>
+                            <th>SGPA</th>
+                            <th>CGPA</th>
+                            <th>Attendance</th>
+                            <th>Arrears</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="semesterTableBody"></tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="text-center">
+
+        <a
+            href="/dashboard.html"
+            class="btn btn-primary me-2"
+        >
+            Back to Dashboard
+        </a>
+
+        <a
+            href="/"
+            class="btn btn-secondary"
+        >
+            Student Form
+        </a>
+
+    </div>
+
+</main>
+
+
+<script src="/js/profile-view.js"></script>
+
+</body>
+</html>
