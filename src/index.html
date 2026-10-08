@@ -3,79 +3,73 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Student Profiling System</title>
 
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+        rel="stylesheet">
 
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <!-- Header -->
+    <!-- HEADER -->
+
     <header class="bg-primary text-white py-4">
+
         <div class="container text-center">
 
-            <h1 class="fw-bold mb-2">
-                Student Academic Personal & Career Profiling System
+            <h1 class="fw-bold">
+                Student Profiling System
             </h1>
 
             <p class="mb-0">
-                Academic, Personal and Career Profile Management
+                Student Academic Personal &amp; Career Profiling System
             </p>
 
         </div>
+
     </header>
 
 
-    <!-- Main Content -->
+    <!-- MAIN -->
+
     <main class="container py-5">
 
-        <div class="text-center mb-5">
-
-            <h2 class="fw-bold">
-                Welcome
-            </h2>
-
-            <p class="text-muted">
-                Please select an option to continue
-            </p>
-
-        </div>
+        <div class="row justify-content-center g-4">
 
 
-        <div class="row g-4 justify-content-center">
+            <!-- FACULTY LOGIN -->
 
-
-            <!-- Faculty Login -->
             <div class="col-md-4">
 
                 <div class="card shadow-sm h-100">
 
-                    <div class="card-body text-center p-4">
+                    <div class="card-body text-center p-5">
 
-                        <div class="display-4 mb-3">
+                        <div class="display-3 mb-3">
                             👩‍🏫
                         </div>
 
-                        <h4 class="fw-bold">
-                            Faculty Login
-                        </h4>
+                        <h3 class="fw-bold">
+                            Faculty
+                        </h3>
 
                         <p class="text-muted">
-                            View, search, filter and manage student profiles.
+                            Faculty members can access and manage
+                            student profiles.
                         </p>
 
                         <a
-                            href="/faculty-login.html"
-                            class="btn btn-primary w-100"
-                        >
+                            href="faculty-login.html"
+                            class="btn btn-primary w-100">
+
                             Faculty Login
+
                         </a>
 
                     </div>
@@ -85,30 +79,33 @@
             </div>
 
 
-            <!-- Student Login -->
+            <!-- STUDENT LOGIN -->
+
             <div class="col-md-4">
 
                 <div class="card shadow-sm h-100">
 
-                    <div class="card-body text-center p-4">
+                    <div class="card-body text-center p-5">
 
-                        <div class="display-4 mb-3">
+                        <div class="display-3 mb-3">
                             🎓
                         </div>
 
-                        <h4 class="fw-bold">
-                            Student Login
-                        </h4>
+                        <h3 class="fw-bold">
+                            Student
+                        </h3>
 
                         <p class="text-muted">
-                            View and update your existing student profile.
+                            Students can view and manage
+                            their profile information.
                         </p>
 
                         <a
-                            href="/student-login.html"
-                            class="btn btn-success w-100"
-                        >
+                            href="student-login.html"
+                            class="btn btn-success w-100">
+
                             Student Login
+
                         </a>
 
                     </div>
@@ -118,30 +115,33 @@
             </div>
 
 
-            <!-- Create Student -->
+            <!-- CREATE STUDENT -->
+
             <div class="col-md-4">
 
                 <div class="card shadow-sm h-100">
 
-                    <div class="card-body text-center p-4">
+                    <div class="card-body text-center p-5">
 
-                        <div class="display-4 mb-3">
-                            ➕
+                        <div class="display-3 mb-3">
+                            📝
                         </div>
 
-                        <h4 class="fw-bold">
+                        <h3 class="fw-bold">
                             Create Student
-                        </h4>
+                        </h3>
 
                         <p class="text-muted">
-                            Create a new student profile and save it to MongoDB.
+                            Create a new student academic,
+                            personal and career profile.
                         </p>
 
                         <a
-                            href="/create-student.html"
-                            class="btn btn-warning w-100"
-                        >
+                            href="create-student.html"
+                            class="btn btn-warning w-100">
+
                             Create Student
+
                         </a>
 
                     </div>
@@ -150,30 +150,19 @@
 
             </div>
 
-        </div>
-
-
-        <!-- Existing Dashboard -->
-        <div class="text-center mt-5">
-
-            <a
-                href="/dashboard.html"
-                class="btn btn-outline-primary"
-            >
-                View Existing Admin Dashboard
-            </a>
 
         </div>
 
     </main>
 
 
-    <!-- Footer -->
-    <footer class="text-center text-muted py-4">
+    <!-- FOOTER -->
 
-        <small>
-            Student Academic Personal & Career Profiling System
-        </small>
+    <footer class="bg-light text-center py-3 mt-5">
+
+        <p class="mb-0 text-muted">
+            Student Profiling System
+        </p>
 
     </footer>
 

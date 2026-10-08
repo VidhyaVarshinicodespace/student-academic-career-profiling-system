@@ -2,145 +2,164 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Student Login - Student Profiling System</title>
 
+    <!-- Bootstrap -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+        rel="stylesheet">
 
-    <link rel="stylesheet" href="/css/style.css">
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
+
 
 <body>
 
-<header class="bg-success text-white py-4">
 
-    <div class="container text-center">
+    <!-- HEADER -->
 
-        <h1 class="fw-bold">
-            Student Login
-        </h1>
+    <header class="bg-success text-white py-4">
 
-        <p class="mb-0">
-            Student Academic Personal & Career Profiling System
-        </p>
+        <div class="container text-center">
 
-    </div>
+            <h1 class="fw-bold">
+                Student Login
+            </h1>
 
-</header>
+            <p class="mb-0">
+                Student Academic Personal &amp; Career Profiling System
+            </p>
 
+        </div>
 
-<main class="container py-5">
-
-    <div class="row justify-content-center">
-
-        <div class="col-md-5">
-
-            <div class="card shadow-sm">
-
-                <div class="card-body p-4">
-
-                    <div class="text-center mb-4">
-
-                        <div class="display-4">
-                            🎓
-                        </div>
-
-                        <h3 class="fw-bold mt-2">
-                            Student Login
-                        </h3>
-
-                        <p class="text-muted">
-                            Login to access your student profile
-                        </p>
-
-                    </div>
+    </header>
 
 
-                    <!-- LOGIN FORM -->
+    <!-- LOGIN -->
 
-                    <form id="studentLoginForm">
+    <main class="container py-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-5">
+
+                <div class="card shadow-sm">
+
+                    <div class="card-body p-4">
 
 
-                        <!-- EMAIL -->
+                        <!-- ICON + TITLE -->
 
-                        <div class="mb-3">
+                        <div class="text-center mb-4">
 
-                            <label
-                                for="studentEmail"
-                                class="form-label"
-                            >
-                                Institutional Email ID
-                            </label>
+                            <div class="display-4">
+                                🎓
+                            </div>
 
-                            <input
-                                type="email"
-                                id="studentEmail"
-                                class="form-control"
-                                placeholder="Enter your institutional email"
-                                required
-                            >
+                            <h3 class="fw-bold mt-2">
+                                Student Login
+                            </h3>
+
+                            <p class="text-muted">
+                                Login to access your profile
+                            </p>
 
                         </div>
 
 
-                        <!-- PASSWORD -->
+                        <!-- LOGIN FORM -->
 
-                        <div class="mb-4">
+                        <form id="studentLoginForm">
 
-                            <label
-                                for="studentPassword"
-                                class="form-label"
-                            >
-                                Password
-                            </label>
 
-                            <input
-                                type="password"
-                                id="studentPassword"
-                                class="form-control"
-                                placeholder="Enter your password"
-                                required
-                            >
+                            <!-- REGISTER NUMBER -->
 
+                            <div class="mb-3">
+
+                                <label
+                                    for="registerNumber"
+                                    class="form-label">
+
+                                    Register Number
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="registerNumber"
+                                    name="registerNumber"
+                                    class="form-control"
+                                    placeholder="Enter Register Number"
+                                    required>
+
+                            </div>
+
+
+                            <!-- PASSWORD -->
+
+                            <div class="mb-4">
+
+                                <label
+                                    for="studentPassword"
+                                    class="form-label">
+
+                                    Password
+
+                                </label>
+
+                                <input
+                                    type="password"
+                                    id="studentPassword"
+                                    name="password"
+                                    class="form-control"
+                                    placeholder="Enter Password"
+                                    required>
+
+                            </div>
+
+
+                            <!-- LOGIN BUTTON -->
+
+                            <button
+                                type="submit"
+                                class="btn btn-success w-100">
+
+                                Login
+
+                            </button>
+
+                        </form>
+
+
+                        <!-- MESSAGE -->
+
+                        <div
+                            id="loginMessage"
+                            class="alert mt-4 d-none">
                         </div>
 
 
-                        <!-- LOGIN BUTTON -->
+                        <!-- BACK TO HOME -->
 
-                        <button
-                            type="submit"
-                            class="btn btn-success w-100"
-                        >
-                            Login
-                        </button>
+                        <div class="text-center mt-4">
 
+                            <a
+                                href="./"
+                                class="text-decoration-none">
 
-                    </form>
+                                ← Back to Home
 
+                            </a>
 
-                    <!-- MESSAGE -->
+                        </div>
 
-                    <div
-                        id="loginMessage"
-                        class="alert mt-4 d-none"
-                    ></div>
-
-
-                    <!-- BACK -->
-
-                    <div class="text-center mt-4">
-
-                        <a
-                            href="/"
-                            class="text-decoration-none"
-                        >
-                            ← Back to Home
-                        </a>
 
                     </div>
 
@@ -150,12 +169,12 @@
 
         </div>
 
-    </div>
-
-</main>
+    </main>
 
 
-<script src="/js/student-login.js"></script>
+    <!-- JavaScript -->
+
+    <script src="js/student-login.js"></script>
 
 </body>
 

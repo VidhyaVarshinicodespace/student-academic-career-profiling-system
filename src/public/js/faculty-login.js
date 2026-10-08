@@ -14,13 +14,7 @@ document
             document.getElementById("loginMessage");
 
 
-        /*
-         * Temporary project login
-         *
-         * We will move authentication to the backend
-         * later. For now this is only to build and test
-         * the Faculty Dashboard flow.
-         */
+        // Temporary Faculty Login
 
         if (facultyId === "faculty01" && password === "faculty123") {
 
@@ -36,7 +30,7 @@ document
             setTimeout(function () {
 
                 window.location.href =
-                    "/faculty-dashboard.html";
+                    "faculty-dashboard.html";
 
             }, 800);
 

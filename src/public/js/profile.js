@@ -1,4 +1,8 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
+
+    // =========================================================
+    // BASIC SETUP
+    // =========================================================
 
     const form = document.getElementById("studentForm");
     const submitButton = document.getElementById("submitButton");
@@ -7,14 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const params = new URLSearchParams(window.location.search);
     const studentId = params.get("id");
-
     const isEditMode = !!studentId;
 
     let semesterCounter = 0;
 
 
     // =========================================================
-    // BASIC HELPERS
+    // HELPER FUNCTIONS
     // =========================================================
 
     function element(id) {
@@ -23,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     function getValue(id) {
-
         const el = element(id);
 
         if (!el) {
@@ -35,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     function setValue(id, value) {
-
         const el = element(id);
 
         if (!el) {
@@ -43,15 +44,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         el.value =
-            value === undefined ||
-            value === null
+            value === undefined || value === null
                 ? ""
                 : value;
     }
 
 
     function getNumber(id) {
-
         const value = getValue(id);
 
         if (value === "") {
@@ -67,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     function setNumber(id, value) {
-
         const el = element(id);
 
         if (!el) {
@@ -75,25 +73,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         el.value =
-            value === undefined ||
-            value === null
+            value === undefined || value === null
                 ? ""
                 : value;
     }
 
 
     function getChecked(id) {
-
         const el = element(id);
 
-        return el
-            ? el.checked
-            : false;
+        return el ? el.checked : false;
     }
 
 
     function setChecked(id, value) {
-
         const el = element(id);
 
         if (!el) {
@@ -105,24 +98,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     function setSelect(id, value) {
-
         const el = element(id);
 
         if (!el) {
             return;
         }
 
-        if (
-            value !== undefined &&
-            value !== null
-        ) {
+        if (value !== undefined && value !== null) {
             el.value = value;
         }
     }
 
 
     function getArray(id) {
-
         const value = getValue(id);
 
         if (!value.trim()) {
@@ -137,7 +125,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     function setArray(id, values) {
-
         const el = element(id);
 
         if (!el) {
@@ -150,6 +137,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         el.value = values.join(", ");
+    }
+
+
+    function getCardNumber(card, selector) {
+
+        const input = card.querySelector(selector);
+
+        if (!input || input.value === "") {
+            return undefined;
+        }
+
+        const number = Number(input.value);
+
+        return Number.isNaN(number)
+            ? undefined
+            : number;
     }
 
 
@@ -201,9 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    const category =
-        element("category");
-
+    const category = element("category");
 
     if (category) {
 
@@ -222,9 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateCareerFields() {
 
-        const goal =
-            getValue("careerGoal");
-
+        const goal = getValue("careerGoal");
 
         const placementFields =
             element("placementFields");
@@ -264,9 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    const careerGoal =
-        element("careerGoal");
-
+    const careerGoal = element("careerGoal");
 
     if (careerGoal) {
 
@@ -276,97 +273,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         updateCareerFields();
-    }
-
-
-    // =========================================================
-    // ARREAR SECTION
-    // =========================================================
-
-    function getArrearSection() {
-
-        const subjectCode =
-            element("arrearSubjectCode");
-
-        if (!subjectCode) {
-            return null;
-        }
-
-
-        /*
-         * Find the larger section/card containing
-         * the arrear fields.
-         */
-
-        let current =
-            subjectCode.parentElement;
-
-
-        while (
-            current &&
-            current !== document.body
-        ) {
-
-            const text =
-                current.innerText || "";
-
-
-            if (
-                text.includes("Arrear Details") &&
-                (
-                    text.includes("Subject Code") ||
-                    text.includes("Subject Name")
-                )
-            ) {
-
-                return current;
-            }
-
-
-            current =
-                current.parentElement;
-        }
-
-
-        return null;
-    }
-
-
-    function updateArrearSection() {
-
-        const semesterArrearStatuses =
-            document.querySelectorAll(
-                ".semester-arrear-status"
-            );
-
-
-        let hasArrear = false;
-
-
-        semesterArrearStatuses.forEach(
-            select => {
-
-                if (
-                    select.value === "true"
-                ) {
-
-                    hasArrear = true;
-                }
-            }
-        );
-
-
-        const arrearSection =
-            getArrearSection();
-
-
-        if (arrearSection) {
-
-            arrearSection.style.display =
-                hasArrear
-                    ? "block"
-                    : "none";
-        }
     }
 
 
@@ -398,10 +304,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 const id =
                     `semester-${uniqueNumber}-interest-${index}`;
 
-
                 const isSelected =
                     selected.includes(interest);
-
 
                 return `
                     <div class="col-md-4 mb-2">
@@ -418,10 +322,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                             <label
                                 class="form-check-label"
-                                for="${id}">
-
+                                for="${id}"
+                            >
                                 ${interest}
-
                             </label>
 
                         </div>
@@ -434,19 +337,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =========================================================
+    // SEMESTER CONTAINER
+    // =========================================================
+
+    const semesterContainer =
+        element("semesterContainer");
+
+
+    // =========================================================
     // CREATE SEMESTER CARD
     // =========================================================
 
-    function createSemesterCard(
-        semester = {}
-    ) {
+    function createSemesterCard(semester = {}) {
 
         semesterCounter++;
 
-
         const card =
             document.createElement("div");
-
 
         card.className =
             "semester-card border rounded p-3 mb-3";
@@ -458,17 +365,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         const selectedInterests =
-            Array.isArray(
-                semester.areaOfInterest
-            )
+            Array.isArray(semester.areaOfInterest)
                 ? semester.areaOfInterest
                 : [];
 
 
         card.innerHTML = `
 
-            <div class="d-flex justify-content-between
-                        align-items-center mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
 
                 <h5>
                     Semester ${semesterNumber}
@@ -479,10 +383,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         ? `
                             <button
                                 type="button"
-                                class="btn btn-danger btn-sm remove-semester">
-
+                                class="btn btn-danger btn-sm remove-semester"
+                            >
                                 Remove
-
                             </button>
                         `
                         : ""
@@ -521,9 +424,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         min="0"
                         max="10"
                         step="0.01"
-                        value="${
-                            semester.sgpa ?? ""
-                        }"
+                        value="${semester.sgpa ?? ""}"
                     >
 
                 </div>
@@ -541,9 +442,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         min="0"
                         max="10"
                         step="0.01"
-                        value="${
-                            semester.cumulativeCgpa ?? ""
-                        }"
+                        value="${semester.cumulativeCgpa ?? ""}"
                     >
 
                 </div>
@@ -561,9 +460,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         min="0"
                         max="100"
                         step="0.01"
-                        value="${
-                            semester.attendancePercentage ?? ""
-                        }"
+                        value="${semester.attendancePercentage ?? ""}"
                     >
 
                 </div>
@@ -576,7 +473,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     </label>
 
                     <select
-                        class="form-select semester-arrear-status">
+                        class="form-select semester-arrear-status"
+                    >
 
                         <option value="false">
                             No
@@ -601,9 +499,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         type="number"
                         class="form-control semester-number-arrears"
                         min="0"
-                        value="${
-                            semester.numberOfArrears ?? 0
-                        }"
+                        value="${semester.numberOfArrears ?? 0}"
                     >
 
                 </div>
@@ -618,9 +514,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <input
                         type="text"
                         class="form-control semester-achievements"
-                        value="${
-                            semester.academicAchievements || ""
-                        }"
+                        value="${semester.academicAchievements || ""}"
                     >
 
                 </div>
@@ -650,11 +544,12 @@ document.addEventListener("DOMContentLoaded", () => {
         semesterContainer.appendChild(card);
 
 
+        // Set arrear status
+
         const arrearSelect =
             card.querySelector(
                 ".semester-arrear-status"
             );
-
 
         arrearSelect.value =
             semester.arrearStatus === true
@@ -662,14 +557,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 : "false";
 
 
-        // Show/hide arrear section whenever
-        // semester arrear status changes.
-
         arrearSelect.addEventListener(
             "change",
             updateArrearSection
         );
 
+
+        // Remove semester
 
         const removeButton =
             card.querySelector(
@@ -681,7 +575,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             removeButton.addEventListener(
                 "click",
-                () => {
+                function () {
 
                     card.remove();
 
@@ -695,14 +589,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =========================================================
-    // SEMESTER CONTAINER
+    // RENUMBER SEMESTERS
     // =========================================================
 
-    const semesterContainer =
-        element("semesterContainer");
-
-
     function renumberSemesters() {
+
+        if (!semesterContainer) {
+            return;
+        }
+
 
         const cards =
             semesterContainer.querySelectorAll(
@@ -745,7 +640,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =========================================================
-    // ADD SEMESTER
+    // ADD SEMESTER BUTTON
     // =========================================================
 
     if (semesterContainer) {
@@ -772,7 +667,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         addSemesterButton.addEventListener(
             "click",
-            () => {
+            function () {
 
                 createSemesterCard();
 
@@ -805,10 +700,99 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =========================================================
+    // ARREAR SECTION
+    // =========================================================
+
+    function getArrearSection() {
+
+        const subjectCode =
+            element("arrearSubjectCode");
+
+        if (!subjectCode) {
+            return null;
+        }
+
+
+        let current =
+            subjectCode.parentElement;
+
+
+        while (
+            current &&
+            current !== document.body
+        ) {
+
+            const text =
+                current.innerText || "";
+
+
+            if (
+                text.includes("Arrear Details") &&
+                (
+                    text.includes("Subject Code") ||
+                    text.includes("Subject Name")
+                )
+            ) {
+
+                return current;
+            }
+
+
+            current =
+                current.parentElement;
+        }
+
+
+        return null;
+    }
+
+
+    function updateArrearSection() {
+
+        const statuses =
+            document.querySelectorAll(
+                ".semester-arrear-status"
+            );
+
+
+        let hasArrear = false;
+
+
+        statuses.forEach(
+            select => {
+
+                if (select.value === "true") {
+
+                    hasArrear = true;
+                }
+            }
+        );
+
+
+        const arrearSection =
+            getArrearSection();
+
+
+        if (arrearSection) {
+
+            arrearSection.style.display =
+                hasArrear
+                    ? "block"
+                    : "none";
+        }
+    }
+
+
+    // =========================================================
     // COLLECT SEMESTERS
     // =========================================================
 
     function collectSemesters() {
+
+        if (!semesterContainer) {
+            return [];
+        }
+
 
         const cards =
             semesterContainer.querySelectorAll(
@@ -875,8 +859,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         ".semester-interest:checked"
                     )
                 ).map(
-                    checkbox =>
-                        checkbox.value
+                    checkbox => checkbox.value
                 );
 
 
@@ -897,20 +880,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
             semesters.push({
 
-                semesterNumber:
-                    semesterNumber,
+                semesterNumber,
 
-                sgpa:
-                    sgpa,
+                sgpa,
 
-                cumulativeCgpa:
-                    cgpa,
+                cumulativeCgpa: cgpa,
 
                 attendancePercentage:
                     attendance,
 
-                arrearStatus:
-                    arrearStatus,
+                arrearStatus,
 
                 numberOfArrears:
                     numberOfArrears ?? 0,
@@ -925,32 +904,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         return semesters;
-    }
-
-
-    function getCardNumber(
-        card,
-        selector
-    ) {
-
-        const value =
-            card.querySelector(
-                selector
-            ).value;
-
-
-        if (value === "") {
-            return undefined;
-        }
-
-
-        const number =
-            Number(value);
-
-
-        return Number.isNaN(number)
-            ? undefined
-            : number;
     }
 
 
@@ -1076,6 +1029,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = {
 
             // PERSONAL
+
             studentName:
                 getValue("studentName"),
 
@@ -1083,8 +1037,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 getValue("registerNumber"),
 
             dateOfBirth:
-                getValue("dateOfBirth")
-                    || undefined,
+                getValue("dateOfBirth") ||
+                undefined,
 
             gender:
                 getValue("gender"),
@@ -1108,17 +1062,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 getValue("residentialAddress"),
 
             category:
-                getValue("category")
-                    || undefined,
+                getValue("category") ||
+                undefined,
 
             hostelName:
                 getValue("hostelName"),
 
             distanceToCollege:
-                getNumber("distanceToCollege"),
+                getNumber(
+                    "distanceToCollege"
+                ),
 
 
             // FAMILY
+
             family: {
 
                 fatherName:
@@ -1169,16 +1126,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             // ACADEMIC
+
             semesters:
                 collectSemesters(),
 
 
             // ARREARS
+
             arrears:
                 collectArrears(),
 
 
             // TECHNICAL
+
             technical: {
 
                 programmingLanguages:
@@ -1245,6 +1205,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             // SELF EVALUATION
+
             selfEvaluation: {
 
                 academicStrengths:
@@ -1310,6 +1271,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             // CAREER
+
             career: {
 
                 goal:
@@ -1319,6 +1281,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         // PLACEMENT
+
         if (
             data.career.goal ===
             "Placement"
@@ -1345,6 +1308,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         // HIGHER STUDIES
+
         if (
             data.career.goal ===
             "Higher Studies"
@@ -1376,6 +1340,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         // ENTREPRENEURSHIP
+
         if (
             data.career.goal ===
             "Entrepreneurship"
@@ -1406,80 +1371,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        console.log(
-            "DATA BEING SENT:",
-            JSON.stringify(
-                data,
-                null,
-                2
-            )
-        );
-
-
         return data;
     }
 
 
     // =========================================================
-    // LOAD STUDENT FOR EDIT
-    // =========================================================
-
-    async function loadStudent() {
-
-        if (!isEditMode) {
-            return;
-        }
-
-
-        try {
-
-            const response =
-                await fetch(
-                    `/api/students/${studentId}`
-                );
-
-
-            if (!response.ok) {
-
-                throw new Error(
-                    "Unable to load student profile."
-                );
-            }
-
-
-            const student =
-                await response.json();
-
-
-            console.log(
-                "STUDENT LOADED FOR EDIT:",
-                student
-            );
-
-
-            populateForm(student);
-
-
-        } catch (error) {
-
-            console.error(
-                "LOAD ERROR:",
-                error
-            );
-
-
-            alert(
-                "Failed to load student details."
-            );
-        }
-    }
-
-
-    // =========================================================
-    // POPULATE FORM WITH SAVED DATA
+    // POPULATE FORM
     // =========================================================
 
     function populateForm(student) {
+
+        console.log(
+            "POPULATING STUDENT:",
+            student
+        );
+
 
         // -----------------------------------------------------
         // PERSONAL DETAILS
@@ -1490,10 +1396,12 @@ document.addEventListener("DOMContentLoaded", () => {
             student.studentName
         );
 
+
         setValue(
             "registerNumber",
             student.registerNumber
         );
+
 
         setValue(
             "dateOfBirth",
@@ -1502,50 +1410,60 @@ document.addEventListener("DOMContentLoaded", () => {
                 : ""
         );
 
+
         setSelect(
             "gender",
             student.gender
         );
+
 
         setValue(
             "department",
             student.department
         );
 
+
         setValue(
             "section",
             student.section
         );
+
 
         setValue(
             "institutionalEmail",
             student.institutionalEmail
         );
 
+
         setValue(
             "personalEmail",
             student.personalEmail
         );
+
 
         setValue(
             "mobile",
             student.mobile
         );
 
+
         setValue(
             "residentialAddress",
             student.residentialAddress
         );
+
 
         setSelect(
             "category",
             student.category
         );
 
+
         setValue(
             "hostelName",
             student.hostelName
         );
+
 
         setNumber(
             "distanceToCollege",
@@ -1569,60 +1487,72 @@ document.addEventListener("DOMContentLoaded", () => {
             family.fatherName
         );
 
+
         setValue(
             "fatherOccupation",
             family.fatherOccupation
         );
+
 
         setValue(
             "fatherIncomeRange",
             family.fatherIncomeRange
         );
 
+
         setValue(
             "fatherMobile",
             family.fatherMobile
         );
+
 
         setValue(
             "motherName",
             family.motherName
         );
 
+
         setValue(
             "motherOccupation",
             family.motherOccupation
         );
+
 
         setValue(
             "motherIncomeRange",
             family.motherIncomeRange
         );
 
+
         setValue(
             "motherMobile",
             family.motherMobile
         );
+
 
         setValue(
             "guardianName",
             family.guardianName
         );
 
+
         setValue(
             "emergencyContact",
             family.emergencyContact
         );
+
 
         setChecked(
             "firstGenerationGraduate",
             family.firstGenerationGraduate
         );
 
+
         setChecked(
             "scholarshipReceived",
             family.scholarshipReceived
         );
+
 
         setChecked(
             "financialGuidanceRequired",
@@ -1678,60 +1608,72 @@ document.addEventListener("DOMContentLoaded", () => {
             technical.programmingLanguages
         );
 
+
         setArray(
             "technicalSkills",
             technical.technicalSkills
         );
+
 
         setValue(
             "technicalAreaOfInterest",
             technical.areaOfInterest
         );
 
+
         setValue(
             "preferredTechnicalDomain",
             technical.preferredTechnicalDomain
         );
+
 
         setArray(
             "certifications",
             technical.certifications
         );
 
+
         setValue(
             "hackathons",
             technical.hackathons
         );
+
 
         setValue(
             "internshipExperience",
             technical.internshipExperience
         );
 
+
         setValue(
             "githubProfile",
             technical.githubProfile
         );
+
 
         setValue(
             "linkedinProfile",
             technical.linkedinProfile
         );
 
+
         setValue(
             "hackerrankProfile",
             technical.hackerrankProfile
         );
+
 
         setValue(
             "hackerearthProfile",
             technical.hackerearthProfile
         );
 
+
         setValue(
             "communicationSkillLevel",
             technical.communicationSkillLevel
         );
+
 
         setValue(
             "aptitudeSkillLevel",
@@ -1752,55 +1694,66 @@ document.addEventListener("DOMContentLoaded", () => {
             selfEvaluation.academicStrengths
         );
 
+
         setValue(
             "technicalStrengths",
             selfEvaluation.technicalStrengths
         );
+
 
         setValue(
             "communicationStrengths",
             selfEvaluation.communicationStrengths
         );
 
+
         setValue(
             "leadershipQualities",
             selfEvaluation.leadershipQualities
         );
+
 
         setValue(
             "teamworkAbilities",
             selfEvaluation.teamworkAbilities
         );
 
+
         setValue(
             "areasRequiringImprovement",
             selfEvaluation.areasRequiringImprovement
         );
+
 
         setValue(
             "subjectsRequiringSupport",
             selfEvaluation.subjectsRequiringSupport
         );
 
+
         setValue(
             "technicalSkillsToDevelop",
             selfEvaluation.technicalSkillsToDevelop
         );
+
 
         setValue(
             "communicationAptitudeToImprove",
             selfEvaluation.communicationAptitudeToImprove
         );
 
+
         setValue(
             "mentorSupportExpected",
             selfEvaluation.mentorSupportExpected
         );
 
+
         setValue(
             "shortTermGoal",
             selfEvaluation.shortTermGoal
         );
+
 
         setValue(
             "longTermGoal",
@@ -1829,10 +1782,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 career.placement.targetCompanyType
             );
 
+
             setValue(
                 "preferredRole",
                 career.placement.preferredRole
             );
+
 
             setValue(
                 "placementPreparationStatus",
@@ -1848,15 +1803,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 career.higherStudies.preferredCourse
             );
 
+
             setValue(
                 "preferredCountry",
                 career.higherStudies.preferredCountry
             );
 
+
             setValue(
                 "entranceExam",
                 career.higherStudies.entranceExam
             );
+
 
             setValue(
                 "higherStudiesPreparationStatus",
@@ -1872,15 +1830,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 career.entrepreneurship.businessIdea
             );
 
+
             setValue(
                 "entrepreneurshipDomain",
                 career.entrepreneurship.domain
             );
 
+
             setValue(
                 "entrepreneurshipCurrentStage",
                 career.entrepreneurship.currentStage
             );
+
 
             setValue(
                 "entrepreneurshipSupportRequired",
@@ -1895,7 +1856,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         // -----------------------------------------------------
-        // EDIT MODE LABELS
+        // EDIT MODE
         // -----------------------------------------------------
 
         if (pageTitle) {
@@ -1910,18 +1871,84 @@ document.addEventListener("DOMContentLoaded", () => {
             submitButton.textContent =
                 "Update Student Profile";
         }
+
+
+        console.log(
+            "FORM POPULATED SUCCESSFULLY"
+        );
     }
 
 
     // =========================================================
-    // SUBMIT
+    // LOAD STUDENT
+    // =========================================================
+
+    async function loadStudent() {
+
+        if (!isEditMode) {
+            return;
+        }
+
+
+        console.log(
+            "Loading student:",
+            studentId
+        );
+
+
+        try {
+
+            const response =
+                await fetch(
+                    `/api/students/${studentId}`
+                );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Unable to load student profile."
+                );
+            }
+
+
+            const student =
+                await response.json();
+
+
+            console.log(
+                "STUDENT LOADED:",
+                student
+            );
+
+
+            populateForm(student);
+
+
+        } catch (error) {
+
+            console.error(
+                "LOAD ERROR:",
+                error
+            );
+
+
+            alert(
+                "Failed to load student details."
+            );
+        }
+    }
+
+
+    // =========================================================
+    // SUBMIT FORM
     // =========================================================
 
     if (form) {
 
         form.addEventListener(
             "submit",
-            async event => {
+            async function (event) {
 
                 event.preventDefault();
 
@@ -1990,7 +2017,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         await fetch(
                             url,
                             {
-                                method,
+                                method: method,
 
                                 headers: {
                                     "Content-Type":
@@ -2005,12 +2032,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     const result =
                         await response.json();
-
-
-                    console.log(
-                        "SERVER RESPONSE:",
-                        result
-                    );
 
 
                     if (!response.ok) {
@@ -2035,8 +2056,16 @@ document.addEventListener("DOMContentLoaded", () => {
                         studentId;
 
 
-                    window.location.href =
-                        `/student-profile.html?id=${savedId}`;
+                    if (savedId) {
+
+                        window.location.href =
+                            `/student-profile.html?id=${savedId}`;
+
+                    } else {
+
+                        window.location.href =
+                            "/faculty-dashboard.html";
+                    }
 
 
                 } catch (error) {
@@ -2072,14 +2101,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =========================================================
-    // CANCEL
+    // CANCEL BUTTON
     // =========================================================
 
     if (cancelButton) {
 
         cancelButton.addEventListener(
             "click",
-            () => {
+            function () {
 
                 if (studentId) {
 
@@ -2103,369 +2132,3 @@ document.addEventListener("DOMContentLoaded", () => {
     loadStudent();
 
 });
-// =====================================================
-// RESET PASSWORD
-// =====================================================
-
-const resetPasswordButton = document.getElementById("resetPasswordButton");
-const passwordResetSection = document.getElementById("passwordResetSection");
-const passwordMessage = document.getElementById("passwordMessage");
-
-if (resetPasswordButton) {
-
-    // Show password reset section only in EDIT mode
-    if (studentId) {
-        passwordResetSection.style.display = "block";
-    }
-
-    resetPasswordButton.addEventListener("click", async () => {
-
-        const newPassword =
-            document.getElementById("newPassword").value.trim();
-
-        const confirmPassword =
-            document.getElementById("confirmPassword").value.trim();
-
-        // Check password length
-        if (newPassword.length < 6) {
-
-            passwordMessage.style.display = "block";
-            passwordMessage.className = "alert alert-danger mt-3";
-            passwordMessage.textContent =
-                "Password must contain at least 6 characters.";
-
-            return;
-        }
-
-        // Check passwords match
-        if (newPassword !== confirmPassword) {
-
-            passwordMessage.style.display = "block";
-            passwordMessage.className = "alert alert-danger mt-3";
-            passwordMessage.textContent =
-                "Passwords do not match.";
-
-            return;
-        }
-
-        // Check student ID
-        if (!studentId) {
-
-            passwordMessage.style.display = "block";
-            passwordMessage.className = "alert alert-danger mt-3";
-            passwordMessage.textContent =
-                "Student ID not found.";
-
-            return;
-        }
-
-        try {
-
-            const response = await fetch(
-                `/api/students/set-password/${studentId}`,
-                {
-                    method: "PUT",
-
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-
-                    body: JSON.stringify({
-                        password: newPassword,
-                        confirmPassword: confirmPassword
-                    })
-                }
-            );
-
-            const result = await response.json();
-
-            if (!response.ok) {
-
-                passwordMessage.style.display = "block";
-                passwordMessage.className =
-                    "alert alert-danger mt-3";
-
-                passwordMessage.textContent =
-                    result.message || "Failed to reset password.";
-
-                return;
-            }
-
-            // Success message
-            passwordMessage.style.display = "block";
-            passwordMessage.className =
-                "alert alert-success mt-3";
-
-            passwordMessage.textContent =
-                "Password reset successfully!";
-
-            // Clear password fields
-            document.getElementById("newPassword").value = "";
-            document.getElementById("confirmPassword").value = "";
-
-        } catch (error) {
-
-            console.error(error);
-
-            passwordMessage.style.display = "block";
-            passwordMessage.className =
-                "alert alert-danger mt-3";
-
-            passwordMessage.textContent =
-                "Server error. Please try again.";
-        }
-    });
-}
-// =====================================================
-// RESET PASSWORD
-// =====================================================
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const resetPasswordButton =
-        document.getElementById("resetPasswordButton");
-
-    const passwordResetSection =
-        document.getElementById("passwordResetSection");
-
-    const passwordMessage =
-        document.getElementById("passwordMessage");
-
-    const newPassword =
-        document.getElementById("newPassword");
-
-    const confirmPassword =
-        document.getElementById("confirmPassword");
-
-
-    // Get student ID from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const currentStudentId = urlParams.get("id");
-
-
-    // Show password section only when editing an existing student
-    if (currentStudentId && passwordResetSection) {
-        passwordResetSection.style.display = "block";
-    }
-
-
-    // Reset password button
-    if (resetPasswordButton) {
-
-        resetPasswordButton.addEventListener("click", async function () {
-
-            const password = newPassword.value.trim();
-            const confirm = confirmPassword.value.trim();
-
-
-            // Check password
-            if (password.length < 6) {
-
-                passwordMessage.style.display = "block";
-                passwordMessage.className =
-                    "alert alert-danger mt-3";
-
-                passwordMessage.textContent =
-                    "Password must contain at least 6 characters.";
-
-                return;
-            }
-
-
-            // Check confirmation
-            if (password !== confirm) {
-
-                passwordMessage.style.display = "block";
-                passwordMessage.className =
-                    "alert alert-danger mt-3";
-
-                passwordMessage.textContent =
-                    "Passwords do not match.";
-
-                return;
-            }
-
-
-            // Check student ID
-            if (!currentStudentId) {
-
-                passwordMessage.style.display = "block";
-                passwordMessage.className =
-                    "alert alert-danger mt-3";
-
-                passwordMessage.textContent =
-                    "Student ID was not found.";
-
-                return;
-            }
-
-
-            try {
-
-                const response = await fetch(
-                    `/api/students/set-password/${currentStudentId}`,
-                    {
-                        method: "PUT",
-
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-
-                        body: JSON.stringify({
-                            password: password,
-                            confirmPassword: confirm
-                        })
-                    }
-                );
-
-
-                const result = await response.json();
-
-
-                if (!response.ok) {
-
-                    passwordMessage.style.display = "block";
-                    passwordMessage.className =
-                        "alert alert-danger mt-3";
-
-                    passwordMessage.textContent =
-                        result.message ||
-                        "Failed to reset password.";
-
-                    return;
-                }
-
-
-                // SUCCESS
-                passwordMessage.style.display = "block";
-                passwordMessage.className =
-                    "alert alert-success mt-3";
-
-                passwordMessage.textContent =
-                    "✅ Password reset successfully!";
-
-
-                // Clear password fields
-                newPassword.value = "";
-                confirmPassword.value = "";
-
-            }
-            catch (error) {
-
-                console.error("Password reset error:", error);
-
-                passwordMessage.style.display = "block";
-                passwordMessage.className =
-                    "alert alert-danger mt-3";
-
-                passwordMessage.textContent =
-                    "Server error. Please try again.";
-            }
-
-        });
-    }
-
-});
-async function resetStudentPassword() {
-
-    const newPassword = document.getElementById("newPassword").value.trim();
-    const confirmPassword = document.getElementById("confirmPassword").value.trim();
-
-    const passwordMessage = document.getElementById("passwordMessage");
-
-    const studentId =
-        new URLSearchParams(window.location.search).get("id");
-
-
-    // Check password
-    if (newPassword.length < 6) {
-
-        passwordMessage.style.display = "block";
-        passwordMessage.className = "alert alert-danger mt-3";
-        passwordMessage.textContent =
-            "Password must contain at least 6 characters.";
-
-        return;
-    }
-
-
-    // Check matching password
-    if (newPassword !== confirmPassword) {
-
-        passwordMessage.style.display = "block";
-        passwordMessage.className = "alert alert-danger mt-3";
-        passwordMessage.textContent =
-            "Passwords do not match.";
-
-        return;
-    }
-
-
-    // Check student ID
-    if (!studentId) {
-
-        passwordMessage.style.display = "block";
-        passwordMessage.className = "alert alert-danger mt-3";
-        passwordMessage.textContent =
-            "Student ID not found.";
-
-        return;
-    }
-
-
-    try {
-
-        const response = await fetch(
-            `/api/students/set-password/${studentId}`,
-            {
-                method: "PUT",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify({
-                    password: newPassword,
-                    confirmPassword: confirmPassword
-                })
-            }
-        );
-
-
-        const result = await response.json();
-
-
-        if (response.ok) {
-
-            passwordMessage.style.display = "block";
-            passwordMessage.className =
-                "alert alert-success mt-3";
-
-            passwordMessage.textContent =
-                "✅ Password reset successfully!";
-
-            document.getElementById("newPassword").value = "";
-            document.getElementById("confirmPassword").value = "";
-
-        } else {
-
-            passwordMessage.style.display = "block";
-            passwordMessage.className =
-                "alert alert-danger mt-3";
-
-            passwordMessage.textContent =
-                result.message || "Password reset failed.";
-        }
-
-    } catch (error) {
-
-        console.error(error);
-
-        passwordMessage.style.display = "block";
-        passwordMessage.className =
-            "alert alert-danger mt-3";
-
-        passwordMessage.textContent =
-            "❌ Server error. Please try again.";
-    }
-}

@@ -14,13 +14,13 @@ connectDB();
 
 // ================= MIDDLEWARE =================
 
-// Read JSON data from requests
 app.use(bodyParser.json());
-
-// Read form data
 app.use(express.urlencoded({ extended: true }));
 
-// Serve CSS and JavaScript files from src/public
+
+// ================= STATIC FILES =================
+
+// Serve files from src/public
 app.use(express.static(path.join(__dirname, "public")));
 
 
