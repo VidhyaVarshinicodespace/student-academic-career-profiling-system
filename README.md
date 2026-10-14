@@ -32,7 +32,7 @@ CAFSS aims to provide a centralized platform for managing student profiles and m
 
 1. Clone this repository:
 
-   `git clone YOUR_REPOSITORY_URL`
+   `git clone https://github.com/VidhyaVarshinicodespace/student-academic-career-profiling-system`
 
 2. Navigate to the project directory:
 
