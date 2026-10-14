@@ -1,35 +1,68 @@
-NodeJS + Express
-======================
-This is a simple NodeJS + Express application. This application serves as a basic template for a web server using NodeJS for the backend, Express as the web application framework.
+# Student Academic and Career Profiling System (CAFSS)
 
-What does this application do?
--------------------------------
-This application serves a simple web server that listens on defined port, default: `3000`.
+A web-based application designed to organize student academic, personal, and career-related information.
 
+## Overview
 
-# How to run?
-You can run the application in one of the following ways:
+CAFSS aims to provide a centralized platform for managing student profiles and making relevant information easier to maintain and access.
 
-1. Press `F5`. This will start the application in debug mode.
+## Features
 
-2. Open a terminal by going to 'View' -> 'Terminal'. Then run: 
-    > `npm run dev`
+- Student profile data management
+- Backend API development using Node.js and Express.js
+- MongoDB integration for storing student records
+- Web interface for entering and viewing student information
 
-This will start the application in development mode.
+*Note: Retain only features that are implemented and working in the current version.*
 
+## Technology Stack
 
-Via curl command:
------------------
-1. Open a terminal.
-2. Type the following command: 
-   > `curl http://localhost:3000`
-3. Press 'Enter' to make the request.
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Frontend:** HTML, CSS, JavaScript
 
-Via Thunder Client:
--------------------
-1. Click on the Thunder Client icon on the activity bar on the side. If you can't find it, you can search for 'Thunder Client' in the 'View' -> 'Extensions' menu.
-2. Once Thunder Client is open, click on 'New Request'.
-3. In the 'Request URL' field, enter the URL of your application (e.g., http://localhost:3000) and select the HTTP method from the dropdown menu.
-5. Click on 'Send' to make the request.
+## Getting Started
 
-Happy coding! 🙂
+### Prerequisites
+
+- Node.js and npm
+- MongoDB connection or configured database
+
+### Installation
+
+1. Clone this repository:
+
+   `git clone YOUR_REPOSITORY_URL`
+
+2. Navigate to the project directory:
+
+   `cd student-academic-career-profiling-system`
+
+3. Install dependencies:
+
+   `npm install`
+
+4. Configure the required environment variables using a local `.env` file or the project's existing configuration method.
+
+5. Start the application using the start command configured in `package.json`.
+
+## Security
+
+- Keep database credentials and secrets out of source control.
+- Use environment variables for sensitive configuration.
+- Never commit real student personal information.
+
+## Future Improvements
+
+- Role-based authentication and authorization
+- Improved dashboard and reporting features
+- Automated API tests
+- Deployment and monitoring
+
+## Author
+
+VidhyaVarshini Padmanaban
+
+GitHub: https://github.com/VidhyaVarshinicodespace
+
+LinkedIn: https://www.linkedin.com/in/vidhyavarshini-padmanaban-68813632a/
